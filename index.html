@@ -1,0 +1,61 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Student Management System</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Student Management System</h1>
+      <div class="main-manu">
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="admin/login.php">Admin Login</a></li>
+          <li><a href="student/login.php">Student Login</a></li>
+          <li><a href="register.php">Register</a></li>
+          <li><a href="aboutus.php">About us</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <h2>Student Information</h2>
+      <form action="index.php" method="post">
+        <table>
+          <tr>
+            <td>Choose Standard</td>
+            <td>
+              <select name="std" required>
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="4">4th</option>
+                <option value="5">5th</option>
+                <option value="6">6th</option>
+                <option value="7">7th</option>
+                <option value="8">8th</option>
+                <option value="9">9th</option>
+                <option value="10">10th</option>
+                <option value="11">11th</option>
+                <option value="12">12th</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Enter Roll No.</td>
+            <td><input type="text" name="rollno" required /></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" name="submit" value="Show Info" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <footer>
+      <h3>www.sms.com</h3>
+    </footer>
+  </body>
+</html>
