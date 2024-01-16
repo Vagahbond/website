@@ -3,6 +3,21 @@ html {
   margin: 0;
 }
 
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
 body {
   background-clip: border-box;
   background-image: url("./assets/background.mp4");
@@ -10,8 +25,4 @@ body {
   width: 100vw;
   margin: 0;
   padding: 10px;
-}
-
-h1 {
-  color: red;
 }
