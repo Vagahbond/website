@@ -1,0 +1,8 @@
+services:
+  frontend:
+    image: nginx:1.16.0-alpine
+    ports:
+      - 8080:80
+
+    volumes:
+      - ./src:/usr/share/nginx/html/
