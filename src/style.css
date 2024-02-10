@@ -18,16 +18,27 @@ html {
   z-index: -100;
 }
 
+.blurred-bg {
+  backdrop-filter: blur(20px);
+}
+
+.bordered {
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: var(--fg);
+  border-radius: 2em;
+  border-spacing: 0;
+
+  border-radius: 2em;
+}
+
 #avatar-picture {
-  border-radius: 50%;
   width: 20em;
   height: 20em;
   margin: 5em auto;
   display: block;
 
-  border-style: solid;
-  border-width: 0.2em;
-  border-color: var(--fg);
+  border-radius: 50%;
 
   transition: all 0.3s ease-in-out;
 }
@@ -44,15 +55,7 @@ header {
   width: auto;
 
   width: 40em;
-  border-style: solid;
-  border-width: 0.2em;
-  border-color: var(--fg);
-  border-radius: 2em;
-  border-spacing: 0;
-
   margin: auto;
-
-  backdrop-filter: blur(20px);
 }
 
 header * {
@@ -68,4 +71,15 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
+}
+
+.card {
+  color: var(--fg);
+  background: blue;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  background: red;
 }
