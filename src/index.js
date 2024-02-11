@@ -5,5 +5,4 @@ window.onload = () => {
   if (video.paused) {
     video.play();
   }
-  console.log("HAAAAAA");
 };

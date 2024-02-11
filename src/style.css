@@ -75,11 +75,15 @@ body {
 
 .card {
   color: var(--fg);
-  background: blue;
+  padding: 8em;
+}
+
+.card i {
+  font-size: 12em;
 }
 
 .cards-container {
   display: flex;
   justify-content: space-around;
-  background: red;
+  padding: 2em;
 }
