@@ -1,7 +1,7 @@
 :root {
-  --bg: #000000;
-  --fg: #949494;
-  --accent: #ffffff;
+  --bg: #191724;
+  --fg: #e0def4;
+  --accent: #9ccfd8;
 }
 
 @font-face {
@@ -9,16 +9,45 @@
   src: url(./assets/fonts/TerminusTTF-4.49.3.ttf);
 }
 
-/*@font-face {
-  font-family: Terminus;
-  src: url(./assets/fonts/TerminusTTF-Italic-4.49.3.ttf);
-  font-weight: italic;
-}*/
-
 @font-face {
   font-family: Terminus;
   src: url(./assets/fonts/TerminusTTF-Bold-4.49.3.ttf);
   font-weight: bold;
+}
+
+@keyframes spring {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-20px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-me {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  70% {
+    transform: rotateY(0deg);
+  }
+
+  80% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 html {
@@ -34,6 +63,9 @@ li {
   margin: 1em 0;
 }
 
+li a {
+  color: var(--accent);
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -53,7 +85,52 @@ a {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -100;
+}
+
+.scroll-button {
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  animation: 5s ease infinite spring;
+  position: absolute;
+  /*background-color: red !important;
+  */
+  right: 50%;
+  left: 50%;
+  /* Needed for real center */
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+#scroll-up-button {
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  top: 5em;
+}
+
+#scroll-down-button {
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  bottom: 5em;
+}
+
+.scroll-button.hide {
+  height: 0px !important;
+  width: 0px !important;
+  margin-left: 0px !important;
+}
+
+.scroll-button svg * {
+}
+.scroll-button svg {
+  transform:;
+
+  margin: auto;
+
+  fill: var(--fg);
+  text-align: center;
 }
 
 .blurred-bg {
@@ -62,35 +139,53 @@ a {
 
 .bordered {
   border-style: solid;
-  border-width: 0; /*0.15em;*/
-  border-color: var(--fg);
-  border-radius: 1em;
+  border-width: 1px; /*0.15em;*/
+  border-color: var(--accent);
+  border-radius: 6px;
   border-spacing: 0;
 
-  background-color: rgba(22, 22, 22, 0.4);
+  background-color: rgba(25, 23, 36, 0.2);
+}
+
+#avatar-picture * {
+  margin: auto;
 }
 
 #avatar-picture {
   width: 20em;
   height: 20em;
-  margin: 5em;
   display: block;
+  margin-top: auto;
+  margin-bottom: auto;
 
   border-radius: 50%;
 
-  transition: all 0.3s ease-in-out;
+  display: flex;
 }
 
 #avatar-picture:hover {
-  /* transform: scale(1.2); */
-  transform: rotateY(180deg);
+  animation: 5s ease infinite spring;
 }
 
 header {
+  transition: all 0.5s ease-in-out;
+
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+
   color: var(--fg);
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+
+  height: 100vh;
+}
+
+header.out {
+  top: 100vh;
 }
 
 .name {
@@ -117,12 +212,32 @@ header {
   margin: 0;
 }
 
+#title {
+  color: var(--accent);
+}
+
 #aka,
 #username {
   height: 0;
   overflow: hidden;
   white-space: nowrap;
   margin: 0;
+}
+
+#username {
+  color: var(--accent);
+}
+
+#location {
+  color: var(--fg);
+  white-space: nowrap;
+  display: block;
+}
+
+#location-name {
+  color: var(--accent);
+  white-space: nowrap;
+  display: inline;
 }
 
 .name:hover #aka,
@@ -139,18 +254,43 @@ body {
   padding: 0;
 }
 
+.content {
+  transition: all 0.5s ease-in-out;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content.out {
+  top: 150vh;
+}
+
 .cards-container {
   display: flex;
   justify-content: space-around;
   padding: 4em;
 }
 .card {
+  z-index: 100;
   color: var(--fg);
   display: flex;
   flex-direction: row;
   padding: 0;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
+}
+
+.card a,
+.card svg {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .card svg {
@@ -165,7 +305,30 @@ body {
   text-align: center;
 }
 
-.card:hover svg {
+.card:hover svg,
+.card:focus svg {
+  transform: rotateY(0deg);
+  fill: var(--accent);
+}
+
+.card-logo {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.card-title {
+  animation: 10s ease infinite spin-me;
+  transition: all 0.5s ease-in-out;
+  transform: rotateY(0deg);
+  color: var(--fg);
+  margin: auto;
+}
+
+.card:hover .card-title,
+.card:focus .card-title {
+  animation: none;
+  color: var(--accent);
   transform: rotateY(0deg);
 }
 
@@ -182,7 +345,8 @@ body {
   font-size: 1em;
 }
 
-.card:hover .card-content {
+.card:hover .card-content,
+.card:focus .card-content {
   width: 26em;
   opacity: 1;
   margin: 2em;
@@ -193,22 +357,38 @@ body {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100;
   height: 100;
-  padding: 5em;
+  padding: 2em;
   display: flex;
+  z-index: 10000;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+  padding-bottom: 1em;
+}
+
+.modal-title {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: var(--fg);
 }
 
 .modal-close-button {
   height: 2em;
   max-height: 2em;
-  margin-bottom: 1em;
-
+  margin-top: auto;
+  margin-bottom: auto;
   margin-left: auto;
 }
 
@@ -223,6 +403,7 @@ body {
   justify-content: space-around;
   flex-direction: column;
   padding: 1em;
+  margin: auto;
 }
 
 .hidden {
