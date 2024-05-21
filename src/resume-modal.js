@@ -1,7 +1,7 @@
 function toggleModal(e) {
   const modal = document.querySelector("#resume-modal");
 
-  modal.classList.toggle("hidden");
+  modal.classList.toggle("hide");
 }
 
 document.querySelectorAll("#resume-modal-toggle").forEach((toggle) => {

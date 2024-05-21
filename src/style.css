@@ -367,6 +367,8 @@ body {
   padding: 2em;
   display: flex;
   z-index: 10000;
+
+  transition: all 0.5s ease-in-out;
 }
 
 .modal-header {
@@ -406,6 +408,6 @@ body {
   margin: auto;
 }
 
-.hidden {
-  display: none;
+.modal.hide {
+  top: 100%;
 }
