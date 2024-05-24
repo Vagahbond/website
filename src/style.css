@@ -411,3 +411,12 @@ body {
 .modal.hide {
   top: 100%;
 }
+
+.banner {
+  position: fixed;
+  color: var(--accent);
+  top: 0;
+  margin: 1em;
+  padding: 1em;
+  z-index: 100000;
+}
