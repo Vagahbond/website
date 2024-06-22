@@ -341,19 +341,25 @@ body {
   margin: 0;
 
   width: 0;
+  height: 0;
   opacity: 0;
 
   overflow: hidden;
   white-space: nowrap;
 
   font-size: 1em;
+  max-height: 16em;
 }
 
 .card:hover .card-content,
 .card:focus .card-content {
   width: 26em;
+  max-height: 16em;
+  height: 100%;
   opacity: 1;
   margin: 2em;
+  white-space: wrap;
+  overflow: scroll;
 }
 
 .card .card-content li a:hover {
