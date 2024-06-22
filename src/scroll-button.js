@@ -12,3 +12,8 @@ function toggleState() {
 
 scrollUpButton.onclick = toggleState;
 scrollDownButton.onclick = toggleState;
+
+document.addEventListener("keydown", function(event) {
+  console.log(event.key);
+  toggleState();
+});
