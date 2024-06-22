@@ -17,3 +17,11 @@ document.addEventListener("keydown", function(event) {
   console.log(event.key);
   toggleState();
 });
+
+document.addEventListener(
+  "scrollend",
+  function(_) {
+    toggleState();
+  },
+  true,
+);
