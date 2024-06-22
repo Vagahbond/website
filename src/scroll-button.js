@@ -20,8 +20,10 @@ document.addEventListener("keydown", function(event) {
 
 document.addEventListener(
   "scrollend",
-  function(_) {
-    toggleState();
+  function(e) {
+    if (e.target.nodeName == "#document") {
+      toggleState();
+    }
   },
   true,
 );
